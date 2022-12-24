@@ -10,16 +10,6 @@ jobs:
           aws-access-key-id: '${{ secrets.AWS_ACCESS_KEY_ID }}'
           aws-secret-access-key: '${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}'
           aws-region: ap-south-1
-   
-- hosts: localhost
-  tasks:
-  - name: launching AWS instance using Ansible
-    ec2:
-    key_name: aws_instance_Ansible
-    instance_type: t2.micro
-    image: ami-0dacb0c129b49f529
-    region: us-east-2
-    wait: yes
-
-    count: 1
-    vpc_subnet_id: default
+  run: |
+   cd aws/
+   ansble-playbook main.yml 
